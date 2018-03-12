@@ -1,0 +1,16 @@
+<html>
+	<head>
+		<title>
+	</head>
+		</title>
+{tabla que tiene que aceptar}
+<div id='divScroll' style= overflow:scroll;
+                            height:300px    
+                            width:445px
+                            align-conter:center;
+                            margin-left:auto;
+                            margin-right:auto;
+                            overflow-x:hidden;>  
+<thead style=position:fixed important;>
+    {cuerpo de thead} 
+<tbody style='height:200px';overflow:auto;>    
