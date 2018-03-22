@@ -12,7 +12,6 @@
     //recuperar los datos de la interfaz html
     $opc        = $_POST['txtOpc'];
     $id         = $_POST['txtId'];
-    $clave      = $_POST['txtClave'];
     $nombre     = $_POST['txtNombre'];
 
 ?>    
@@ -27,21 +26,17 @@
 <body onLoad='javascript: document.getElementById("txtNombre").focus()'>
 
 <!-- nombre de formulario, script a redireccionar y protocolo http de envío al servidor -->
-<form id='frmUpdEspecialidades' action='qryEspecialidades.php' method='POST'>
+<form id='frmUpdMaestros' action='qryMaestros.php' method='POST'>
 
     <!--tabla html que contenedora de la forma -->
     <table align='center' width='400'>
         <tr height='100'><td colspan='2' align='center'>
-            <b>Modificando Especialidades</b>
+            <b>Modificando Maestros</b>
             <!-- objetos necesarios para la forma del qryEspecialidades -->
             <input type='hidden' id='txtOpc' name='txtOpc' value=''>
             <input type='hidden' id='txtId' name='txtId' value='<?php echo($id);?>'>
             </td>
         </tr>                    
-        <tr>
-            <td>Clave</td>
-            <td><?php echo($clave);?></td>
-        </tr>
         <tr>
             <td>Nombre</td> 
             <td><input type='text' id='txtNombre' name='txtNombre' value='<?php echo($nombre);?>'></td>
@@ -50,9 +45,9 @@
             <td colspan='2' align='center'>
                 <table border='1'>
                 <tr>
-                <td><input type='button' id='btnGrabar' name='btnGrabar' value='Grabar' style='width: 100px' onClick='enviar("upd")'></td>
-                <td><input type='button' id='btnEliminar' name='btnEliminar' value='Eliminar' style='width: 100px' onClick='enviar("del")'></td>
-                <td><input type='button' id='btnRegresar' name='btnRegresar' value='Regresar' style='width: 100px' onClick='enviar("back")'></td>
+                <td><input type='button' id='btnGrabar' name='btnGrabar' value='Grabar' style='width: 100px' onClick='enviar("updPro")'></td>
+                <td><input type='button' id='btnEliminar' name='btnEliminar' value='Eliminar' style='width: 100px' onClick='enviar("delPro")'></td>
+                <td><input type='button' id='btnRegresar' name='btnRegresar' value='Regresar' style='width: 100px' onClick='enviar("backPro")'></td>
                 </tr>
             </td>
         </tr>

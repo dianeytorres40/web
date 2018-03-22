@@ -1,24 +1,32 @@
-table{
+.table-f{
     border-spacing: 0;
     display: flex;/*Se ajuste dinamicamente al tamano del dispositivo**/
     height: 200px; /*El alto que necesitemos**/
     overflow-y: auto; /**El scroll verticalmente cuando sea necesario*/
     overflow-x: hidden;/*Sin scroll horizontal*/
     table-layout: fixed;/**Forzamos a que las filas tenga el mismo ancho**/
-    width: 98vw; /*El ancho que necesitemos*/
+    width: 100% !important; /*El ancho que necesitemos*/
     border:1px solid gray;
 }
-
-thead{
-    background-color: #f1eee9;
-    position: fixed !importante;/*el thead va ser siempre estatico**/
+.table-full{
+    width: 100%;
 }
-
 th{
     border-bottom: 1px solid #c4c0c9;
     border-right: 1px solid #c4c0c9;
+    width: 25%;
+}
+.table-calificaciones th{
+    width:14%;
 }
 
 tr:nth-child(2n) {
     background: none repeat scroll 0 0 #edebeb;
 }   
+td{
+    width: 100px;
+    text-align: center;
+}
+.table-calificaciones td{
+    width:14%;
+}

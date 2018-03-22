@@ -22,7 +22,10 @@
 				top.frames['2'].location.href = "../alumnos/shwAlumnos.php";
 				break;
 			case 'Calificaciones':
-				top.frames['2'].location.href = "calificaciones.html";
+				top.frames['2'].location.href = "../calificaciones/shwCalificaciones.php";
+				break;
+			case 'Maestros':
+				top.frames['2'].location.href = "../maestros/shwMaestros.php";
 				break;
 			case 'Terminar':
 				window.top.location.href = "http://www.its.mx";
@@ -58,6 +61,11 @@
 		<tr>
 			<td>
 				<input type="button" value="Calificaciones" style="width: 150px; height: 40px;" onclick="opcion('Calificaciones');">
+			</td>
+		</tr>		
+		<tr>
+			<td>
+				<input type="button" value="Maestros" style="width: 150px; height: 40px;" onclick="opcion('Maestros');">
 			</td>
 		</tr>					
 		<tr style="height: 200px">

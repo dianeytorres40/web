@@ -15,7 +15,7 @@
     //obtener colección de registros temporales
 
     //query sql sin criterio de busqueda, obtiene todos los registros ordenados por nombre
-    $strQry = "SELECT alumno.id, alumno.matricula, alumno.nombre, alumno.apaterno, alumno.amaterno, alumno.edad, especialidad.nombre AS especialidad FROM alumno INNER JOIN especialidad ON alumno.especialidad = especialidad.id"; 
+    $strQry = "SELECT id, nombre FROM profesor"; 
     //variable sesion para ser usada en los reportes, son los registros a imprimir
     $_SESSION['strQry'] = $strQry;
     
@@ -31,13 +31,12 @@
             <title>claseDAWEB shwEspecialidades</title> 
             <!-- funciones javascript  --> 
             <script type="text/javascript" src="../js/funciones.js"></script>
-            <link rel="stylesheet" href="../css/estilos.css">
         </head>
 
         <body>
 
         <!-- nombre de formulario, script a redireccionar y protocolo http de envío al servidor -->
-        <form id='frmUpdAlumno' action='./updAlumnos.php' method='POST'>        
+        <form id='frmUpdMaestro' action='./updMaestros.php' method='POST'>        
 
         <!--tabla html que contenedora de botones buscar, imprimir y agregar -->
         <table align='center' width='600' border='0'>
@@ -48,17 +47,11 @@
                      truco para evitar visitar al servidor de bd -->
                 <input type='hidden' id='txtOpc' name='txtOpc' value=''>
                 <input type='hidden' id='txtId' name='txtId' value=''>
-                <input type='hidden' id='matricula' name='matricula' value=''>
-                <input type='hidden' id='txtnombre' name='txtnombre' value=''>
-                <input type='hidden' id='especialidad' name='especialidad' value=''>
-                <input type='hidden' id='edad' name='edad' value=''>
-                <input type='hidden' id='paterno' name='paterno' value=''>
-                <input type='hidden' id='materno' name='materno' value=''>
+                <input type='hidden' id='txtNombre' name='txtNombre' value=''>
         
                 <!-- ventana desplegable con los atributos de la tabla para hacer busquedas -->
                 <select id='selBuscar' name='selBuscar' onClick="javascript: document.getElementById('txtBuscar').focus();">
                     <option id='optBuscar' value='0'>Atributo</option>
-                    <option id='optBuscar' value='matricula'>matricula</option>
                     <option id='optBuscar' value='nombre'>Nombre</option>
                 </select>
                 <!-- caja de texto, contiene dato del criterio de busqueda -->
@@ -70,7 +63,7 @@
                 onclick='buscarMaterias()'>
 
                 <!-- botón de agregar -->
-                <input type='button' id='btnAgregar' name='btnAgregar' value='Agregar' onclick='agregarAlumnos();'>
+                <input type='button' id='btnAgregar' name='btnAgregar' value='Agregar' onclick='agregarMaestros();'>
 
                 <!-- botón de imprimir -->
                 <input type='button' id='btnPrint' name='btnPrint' value='Imprimir' 
@@ -89,35 +82,27 @@
                              margin-right:auto; overflow-x: hidden;'>
 
         <!-- tabla para los titulos de las columnas -->                             
-        <table align='center' border='1' width='400' class="table-full">            
-            <thead class="table-full"> 
+        <table align='center' border='1' width='400'>            
+            <thead style='position: fixed !important;'> 
                 <tr style='background-color: #BAB7B7'>
-                    <th width='50' height='20'>Matricula</th>
+                    <th width='50' height='20'>ID</th>
                     <th height='20'>Nombre</th>
-                    <th height='20'>Especialidad</th>
-                    <th height='20'>Edad</th>
                 </tr>
             </thead>  
 
             <!-- cuerpo de la tabla html que contiene los renglones con cada registro de 
                  la tabla de base de datos especialidades -->
-            <tbody style='overflow:auto;'>                  
+            <tbody style='overflow:auto;'>
+            <tr><td colspan='2'>&nbsp;</td></tr>                    
 
             <?php
             //desplegar los registros de la tabla especialidades de la bd
             while ($registro = mysqli_fetch_array($tablaBD)) {
                 $id      = $registro['id'];
-                $matricula   = $registro['matricula'];
                 $nombre  = $registro['nombre'];
-                $paterno=$registro['apaterno'];
-                $materno=$registro['amaterno'];
-                $especialidad= $registro['especialidad'];
-                $edad = $registro['edad'];
-                echo "<tr onMouseOver='javascript: this.bgColor=\"#BCF5A9\";' onMouseOut='javascript: this.bgColor=\"#FFFFFF\";' onClick=\"actualizarAlumno('$id', '$matricula','$nombre','$paterno','$materno','$especialidad','$edad')\";>
-                        <td width='50'>$matricula</td>
-                        <td>$nombre&nbsp;$paterno&nbsp;$materno</td>
-                        <td>$especialidad</td>
-                        <td>$edad</td>
+                echo "<tr onMouseOver='javascript: this.bgColor=\"#BCF5A9\";' onMouseOut='javascript: this.bgColor=\"#FFFFFF\";' onClick=\"actualizarMaestro('$id','$nombre')\";>
+                        <td width='50'>$id</td>
+                        <td>$nombre</td>
                       </tr>"; //aqui es donde selecciona el registro para modificarlo o eliminarlo           
             }                
             echo "</tbody>

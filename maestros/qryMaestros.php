@@ -13,28 +13,27 @@
     //recuperar datos de interfaz html
     $opcion = $_POST['txtOpc'];
     $id     = $_POST['txtId'];
-    $clave  = $_POST['txtClave'];
     $nombre = $_POST['txtNombre']; 
 
     switch($opcion){        
 
         case 'add':
             //opción de agregar registro
-            $strQry = "INSERT INTO especialidad (clave, nombre) VALUES ('$clave','$nombre')";            
+            $strQry = "INSERT INTO profesor (nombre) VALUES ('$nombre')";            
             $result = mysqli_query($link,$strQry) or die("*** Error al ejecutar el procedimiento almacenado: ".mysqli_error());;                        
             //redirigir el programa al script html de captura de datos
             echo " 
-                <script type='text/javascript'>window.location='./shwEspecialidades.php'</script>
+                <script type='text/javascript'>window.location='./shwMaestros.php'</script>
                  ";                        
             break;
         
         case 'upd':
             //opción de modificar registro
-            $strQry = "UPDATE especialidad SET nombre = '$nombre' WHERE id = $id";            
+            $strQry = "UPDATE profesor SET nombre = '$nombre' WHERE id = $id";            
             $result = mysqli_query($link,$strQry) or die("*** Error al ejecutar el procedimiento almacenado: ".mysqli_error());;                        
             //redirigir el programa al script html de captura de datos
             echo " 
-                <script type='text/javascript'>window.location='./shwEspecialidades.php'</script>
+                <script type='text/javascript'>window.location='./shwMaestros.php'</script>
                  ";                        
             break;
 
