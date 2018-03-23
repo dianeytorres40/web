@@ -6,14 +6,9 @@
             echo "Debe autentificarse";
             exit();
     }
-    
-
     //agregar codigo común
     include '../bd/conexion.php';
-
-
     //obtener colección de registros temporales
-
     //query sql sin criterio de busqueda, obtiene todos los registros ordenados por nombre
     $strQry = "SELECT alumno.id, alumno.matricula, alumno.nombre, alumno.apaterno, alumno.amaterno, alumno.edad, especialidad.nombre AS especialidad FROM alumno INNER JOIN especialidad ON alumno.especialidad = especialidad.id"; 
     //variable sesion para ser usada en los reportes, son los registros a imprimir
@@ -35,10 +30,8 @@
         </head>
 
         <body>
-
         <!-- nombre de formulario, script a redireccionar y protocolo http de envío al servidor -->
         <form id='frmUpdAlumno' action='./updAlumnos.php' method='POST'>        
-
         <!--tabla html que contenedora de botones buscar, imprimir y agregar -->
         <table align='center' width='600' border='0'>
             <tr><td colspan='2' align='center'>
@@ -57,24 +50,24 @@
         
                 <!-- ventana desplegable con los atributos de la tabla para hacer busquedas -->
                 <select id='selBuscar' name='selBuscar' onClick="javascript: document.getElementById('txtBuscar').focus();">
-                    <option id='optBuscar' value='0'>Atributo</option>
-                    <option id='optBuscar' value='matricula'>matricula</option>
+                    <option id='optBuscar' value='matricula'>Matricula</option>
                     <option id='optBuscar' value='nombre'>Nombre</option>
+                    <option id='optBuscar' value='especialidad'>Especialidad</option>
+                    <option id='optBuscar' value='edad'>Edad</option>
                 </select>
                 <!-- caja de texto, contiene dato del criterio de busqueda -->
                 <input type='text' id='txtBuscar' name='txtBuscar' value=''
                 style='width:150px;'>
 
                 <!-- botón de buscar -->
-                <input type='button' id='btnBuscar' name='btnBuscar' value='Buscar' 
-                onclick='buscarMaterias()'>
+                <input type='button' id='btnBuscar' name='btnBuscar' value='Buscar' onclick='buscarAlumnos();'>
 
                 <!-- botón de agregar -->
                 <input type='button' id='btnAgregar' name='btnAgregar' value='Agregar' onclick='agregarAlumnos();'>
 
                 <!-- botón de imprimir -->
                 <input type='button' id='btnPrint' name='btnPrint' value='Imprimir' 
-                onclick='imprimirMaterias()'>
+                onclick='imprimirMaterias();'>
 
                 
 

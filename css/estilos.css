@@ -26,6 +26,7 @@ tr:nth-child(2n) {
 td{
     width: 100px;
     text-align: center;
+    cursor: pointer;
 }
 .table-calificaciones td{
     width:14%;

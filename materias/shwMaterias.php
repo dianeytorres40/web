@@ -10,8 +10,6 @@
 
     //agregar codigo común
     include '../bd/conexion.php';
-
-
     //obtener colección de registros temporales
 
     //query sql sin criterio de busqueda, obtiene todos los registros ordenados por nombre
@@ -33,6 +31,7 @@
             <title>claseDAWEB shwEspecialidades</title> 
             <!-- funciones javascript  --> 
             <script type="text/javascript" src="../js/funciones.js"></script>
+            <link rel="stylesheet" href="../css/estilos.css">
         </head>
 
         <body>

@@ -31,6 +31,7 @@
             <title>claseDAWEB shwEspecialidades</title> 
             <!-- funciones javascript  --> 
             <script type="text/javascript" src="../js/funciones.js"></script>
+            <link rel="stylesheet" href="../css/estilos.css">
         </head>
 
         <body>

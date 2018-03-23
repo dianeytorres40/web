@@ -1,5 +1,4 @@
 /////////////////////////funciones de Especialidades////////////////////////////////////////////
-//funciones de shwEspecialidades
 function agregarEspecialidades(){                                    
     window.location.href = './addEspecialidades.php';
 }
@@ -133,6 +132,34 @@ function grabarAlumno(){
 function regresarShwAlumnos(){
     window.location.href="./shwAlumnos.php"
 }
+function buscarAlumnos(){
+    var sel     = document.getElementById("selBuscar");
+    var clave   = sel.options[sel.selectedIndex].value;            
+    var txtLike = document.getElementById('txtBuscar').value;                                        
+
+    //ajax
+    if (window.XMLHttpRequest){// code for IE7+, Firefox, Chrome, Opera, Safari
+        xmlhttp=new XMLHttpRequest();
+        }
+    else
+        {// code for IE6, IE5
+        xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+        }
+    if (window.XMLHttpRequest){
+        xmlhttp=new XMLHttpRequest();
+        }
+    else {
+        xmlhttp=new ActiveXObject("Msxml2.XMLHTTP");
+        }
+
+    xmlhttp.onreadystatechange=function(){
+        if (xmlhttp.readyState==4 && xmlhttp.status==200){
+            document.getElementById("divTabla").innerHTML=xmlhttp.responseText;
+        }
+    };      
+    xmlhttp.open("GET","./ajxAlumnos.php?varAtributo="+clave+"&varTxtLike="+txtLike,true);             
+    xmlhttp.send();  
+} 
 /////////////////////////funciones de Maestros////////////////////////////////////////////
 function actualizarMaestro(id, nombre){                                    
     document.getElementById('txtId').value = id;
