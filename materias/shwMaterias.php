@@ -31,13 +31,14 @@
             <title>claseDAWEB shwEspecialidades</title> 
             <!-- funciones javascript  --> 
             <script type="text/javascript" src="../js/funciones.js"></script>
+            <script type="text/javascript" src="../js/jquery.js"></script>
             <link rel="stylesheet" href="../css/estilos.css">
         </head>
 
         <body>
 
         <!-- nombre de formulario, script a redireccionar y protocolo http de envío al servidor -->
-        <form id='frmUpdMaterias' action='./updMaterias.php' method='POST'>        
+        <form id='frmUpdCurso' action='./updMaterias.php' method='POST'>        
 
         <!--tabla html que contenedora de botones buscar, imprimir y agregar -->
         <table align='center' width='600' border='0'>
@@ -48,14 +49,15 @@
                      truco para evitar visitar al servidor de bd -->
                 <input type='hidden' id='txtOpc' name='txtOpc' value=''>
                 <input type='hidden' id='txtId' name='txtId' value=''>
-                <input type='hidden' id='txtClave' name='txtClave' value=''>
+                <input type='hidden' id='clave' name='clave' value=''>
                 <input type='hidden' id='txtNombre' name='txtNombre' value=''>
+                <input type='hidden' id='espec' name='espec' value=''>
 
                 <!-- ventana desplegable con los atributos de la tabla para hacer busquedas -->
                 <select id='selBuscar' name='selBuscar' onClick="javascript: document.getElementById('txtBuscar').focus();">
-                    <option id='optBuscar' value='0'>Atributo</option>
                     <option id='optBuscar' value='clave'>Clave</option>
                     <option id='optBuscar' value='nombre'>Nombre</option>
+                    <option id='optBuscar' value='espId'>Especialidad</option>
                 </select>
 
                 <!-- caja de texto, contiene dato del criterio de busqueda -->
@@ -64,7 +66,7 @@
 
                 <!-- botón de buscar -->
                 <input type='button' id='btnBuscar' name='btnBuscar' value='Buscar' 
-                onclick='buscarMaterias()'>
+                onclick='buscarCurso()'>
 
                 <!-- botón de imprimir -->
                 <input type='button' id='btnPrint' name='btnPrint' value='Imprimir' 
@@ -72,7 +74,7 @@
 
                 <!-- botón de agregar -->
                 <input type='button' id='btnAgregar' name='btnAgregar' value='Agregar' 
-                onclick='agregarMaterias()'> 
+                onclick='agregarCurso()'> 
 
             </td></tr>
         </table>
@@ -86,30 +88,35 @@
 
         <!-- tabla para los titulos de las columnas -->                             
         <table align='center' border='1' width='400'>            
-            <thead style='position: fixed !important;'> 
+            <thead> 
                 <tr style='background-color: #BAB7B7'>
                     <th width='50' height='20'>Clave</th>
                     <th height='20'>Nombre</th>
+                    <th height='20'>Especialidad</th>
                 </tr>
             </thead>  
 
             <!-- cuerpo de la tabla html que contiene los renglones con cada registro de 
                  la tabla de base de datos especialidades -->
-            <tbody style='overflow:auto;'>
-            <tr><td colspan='2'>&nbsp</td></tr>                    
+            <tbody style='overflow:auto;'>                 
 
             <?php
             //desplegar los registros de la tabla especialidades de la bd
             while ($registro = mysqli_fetch_array($tablaBD)) {
                 $id      = $registro['id'];
                 $clave   = $registro['clave'];
-                $nombre  = $registro['nombre']; 
+                $nombre  = $registro['nombre'];
+                $shwEsp = "SELECT nombre FROM especialidad WHERE id =".$registro['espId']."";
+                $tablaEsp = mysqli_query($link, $shwEsp);
+                $rowEsp= mysqli_fetch_array($tablaEsp);
+                $especialidad = $rowEsp['nombre'];
                 echo "<tr
                         onMouseOver='javascript: this.bgColor=\"#BCF5A9\";' 
                         onMouseOut='javascript: this.bgColor=\"#FFFFFF\";'
-                        onClick=\"actualizarEspecialidades($id, '$clave', '$nombre')\";>
+                        onClick=\"actualizarCurso($id, '$clave', '$nombre','$especialidad')\";>
                         <td width='50'>$clave</td>
                         <td>$nombre</td>
+                        <td>$especialidad</td>
                       </tr>"; //aqui es donde selecciona el registro para modificarlo o eliminarlo           
             }                
             echo "</tbody>

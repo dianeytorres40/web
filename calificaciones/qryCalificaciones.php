@@ -24,12 +24,12 @@
 
         case 'add':
             //opción de agregar registro
-            $strQry = "INSERT INTO alumno (matricula, nombre, apaterno, amaterno, edad, especialidad) VALUES ('$matricula','$txtnombre','$paterno','$materno', '$edad','$especialidad')";            
+            $strQry = "INSERT INTO calificaciones (matricula, cursoid, profesorid, ciclo,ano, calificacion) VALUES ('$matricula','$curso','$profesor','$ciclo', '$ano','$calificacion')";            
             error_log($strQry);
             $result = mysqli_query($link,$strQry) or die("*** Error al ejecutar el procedimiento almacenado: ".mysqli_error());;                        
             //redirigir el programa al script html de captura de datos
             echo " 
-                <script type='text/javascript'>window.location='./shwAlumnos.php'</script>
+                <script type='text/javascript'>window.location='./shwCalificaciones.php'</script>
                  ";                        
             break;
         

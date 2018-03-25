@@ -34,6 +34,7 @@
             <!-- funciones javascript  --> 
             <script type="text/javascript" src="../js/funciones.js"></script>
             <link rel="stylesheet" href="../css/estilos.css">
+            <script type="text/javascript" src="../js/jquery.js"></script>
         </head>
 
         <body>
@@ -68,7 +69,7 @@
                 onclick='imprimirEspecialidades()'>
                 <!-- botón de agregar -->
                 <input type='button' id='btnAgregar' name='btnAgregar' value='Agregar' 
-                onclick='agregarEspecialidades()'> 
+                onclick='agregarCalificaciones()'> 
             </td></tr>
         </table>
         <!-- región para alojar la tabla contenedora de registros -->        
@@ -77,7 +78,7 @@
         <div id='divScroll'  style='overflow:auto; align-content:center; margin-left:auto; margin-right:auto; overflow-x: hidden;'>
         <!-- tabla para los titulos de las columnas -->                             
         <table align='center' border='1' width='400'>            
-            <thead style='position: fixed !important;'> 
+            <thead> 
                 <tr style='background-color: #BAB7B7'>
                     <th width='50' height='20'>Clave</th>
                     <th height='20'>Nombre</th>
@@ -85,8 +86,7 @@
             </thead>  
             <!-- cuerpo de la tabla html que contiene los renglones con cada registro de 
                  la tabla de base de datos especialidades -->
-            <tbody style='overflow:auto;'>
-            <tr><td colspan='2'>&nbsp</td></tr>                    
+            <tbody style='overflow:auto;'>                
             <?php
             //desplegar los registros de la tabla especialidades de la bd
             while ($registro = mysqli_fetch_array($tablaBD)) {

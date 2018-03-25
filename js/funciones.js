@@ -1,56 +1,3 @@
-/////////////////////////funciones de Especialidades////////////////////////////////////////////
-function agregarEspecialidades(){                                    
-    window.location.href = './addEspecialidades.php';
-}
-
-function actualizarEspecialidades(id, clave, nombre){                                    
-    document.getElementById('txtId').value = id;
-    document.getElementById('txtClave').value = clave;
-    document.getElementById('txtNombre').value = nombre;
-    document.getElementById('txtOpc').value = 'upd';
-    document.getElementById('frmUpdEspecialidades').submit();
-}
-
-function buscarEspecialidades(){
-    var sel     = document.getElementById("selBuscar");
-    var clave   = sel.options[sel.selectedIndex].value;            
-    var txtLike = document.getElementById('txtBuscar').value;                                        
-
-    //ajax
-    if (window.XMLHttpRequest){// code for IE7+, Firefox, Chrome, Opera, Safari
-        xmlhttp=new XMLHttpRequest();
-        }
-    else
-        {// code for IE6, IE5
-        xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
-        }
-    if (window.XMLHttpRequest){
-        xmlhttp=new XMLHttpRequest();
-        }
-    else {
-        xmlhttp=new ActiveXObject("Msxml2.XMLHTTP");
-        }
-
-    xmlhttp.onreadystatechange=function(){
-        if (xmlhttp.readyState==4 && xmlhttp.status==200){
-            document.getElementById("divTabla").innerHTML=xmlhttp.responseText;
-        }
-    };      
-
-    xmlhttp.open("GET","./ajxEspecialidades.php?varAtributo="+clave+"&varTxtLike="+txtLike,true);             
-    xmlhttp.send();  
-} 
-
-function imprimirEspecialidades(){
-    window.location.href = '../reportes/repEspecialidades.php';
-}   
-function grabarEspecialidad(){ 
-    //falta validar las cajas de entrada de datos
-    document.getElementById('frmAddEspecialidades').submit();
-}
-function regresarShwEspecialidades(){
-    window.location.href="./shwEspecialidades.php"
-}
 function enviar(opc){       
     switch (opc){
         case 'upd':                           
@@ -80,7 +27,7 @@ function enviar(opc){
             }                              
             break;
         case 'backAlu':
-            window.location.href='./shwEspecialidades.php'
+            window.location.href='./shwAlumnos.php'
             break;
         case 'updPro':                           
             document.getElementById('txtOpc').value = 'upd'; 
@@ -106,9 +53,77 @@ function enviar(opc){
             }                              
             break;
         case 'backCal':
-            window.location.href='./shwCalificacines.php'
+            window.location.href='./shwCalificaciones.php';
             break;
-    }                       
+        case 'updCurso':                           
+            document.getElementById('txtOpc').value = 'upd'; 
+            document.getElementById('frmUpdCurso').submit();                               
+            break;      
+        case 'delCurso':                                            
+            if(confirm('Desea eliminar éste registro?')){
+                document.getElementById('txtOpc').value = 'del';
+                document.getElementById('frmUpdCalificacion').submit();
+            }                              
+            break;
+        case 'backCurso':
+            window.location.href='./shwMaterias.php';
+            break;
+    
+        
+        }                       
+}
+/////////////////////////funciones de Especialidades////////////////////////////////////////////
+function agregarEspecialidades(){                                    
+    window.location.href = './addEspecialidades.php';
+}
+function actualizarEspecialidades(id, clave, nombre){                                    
+    document.getElementById('txtId').value = id;
+    document.getElementById('txtClave').value = clave;
+    document.getElementById('txtNombre').value = nombre;
+    document.getElementById('txtOpc').value = 'upd';
+    document.getElementById('frmUpdEspecialidades').submit();
+}
+function buscarEspecialidades(){
+    var sel     = document.getElementById("selBuscar");
+    var clave   = sel.options[sel.selectedIndex].value;            
+    var txtLike = document.getElementById('txtBuscar').value;                                        
+
+    //ajax
+    if (window.XMLHttpRequest){// code for IE7+, Firefox, Chrome, Opera, Safari
+        xmlhttp=new XMLHttpRequest();
+        }
+    else
+        {// code for IE6, IE5
+        xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+        }
+    if (window.XMLHttpRequest){
+        xmlhttp=new XMLHttpRequest();
+        }
+    else {
+        xmlhttp=new ActiveXObject("Msxml2.XMLHTTP");
+        }
+
+    xmlhttp.onreadystatechange=function(){
+        if (xmlhttp.readyState==4 && xmlhttp.status==200){
+            document.getElementById("divTabla").innerHTML=xmlhttp.responseText;
+        }
+    };      
+
+    xmlhttp.open("GET","./ajxEspecialidades.php?varAtributo="+clave+"&varTxtLike="+txtLike,true);             
+    xmlhttp.send();  
+} 
+function imprimirEspecialidades(){
+    window.location.href = '../reportes/repEspecialidades.php';
+}   
+function grabarEspecialidad(){ 
+    //falta validar las cajas de entrada de datos
+    document.getElementById('frmAddEspecialidades').submit();
+}
+function regresarShwEspecialidades(){
+    window.location.href="./shwEspecialidades.php"
+}
+function validaEspecialidades(){
+    
 }
 /////////////////////////funciones de Alumnos////////////////////////////////////////////
 function actualizarAlumno(id, matricula,nombre,paterno,materno, especialidad, edad){                                    
@@ -161,7 +176,7 @@ function buscarAlumnos(){
     xmlhttp.send();  
 } 
 /////////////////////////funciones de Maestros////////////////////////////////////////////
-function actualizarMaestro(id, nombre){                                    
+function actualizarMaestros(id, nombre){                                    
     document.getElementById('txtId').value = id;
     document.getElementById('txtNombre').value = nombre;
     document.getElementById('txtOpc').value = 'upd';
@@ -177,7 +192,35 @@ function grabarMaestro(){
 function regresarShwAlumnos(){
     window.location.href="./shwMaestros.php"
 }
-/////////////////////////funciones de Maestros////////////////////////////////////////////
+function buscarMaestros(){
+    var sel     = document.getElementById("selBuscar");
+    var clave   = sel.options[sel.selectedIndex].value;            
+    var txtLike = document.getElementById('txtBuscar').value;                                        
+
+    //ajax
+    if (window.XMLHttpRequest){// code for IE7+, Firefox, Chrome, Opera, Safari
+        xmlhttp=new XMLHttpRequest();
+        }
+    else
+        {// code for IE6, IE5
+        xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+        }
+    if (window.XMLHttpRequest){
+        xmlhttp=new XMLHttpRequest();
+        }
+    else {
+        xmlhttp=new ActiveXObject("Msxml2.XMLHTTP");
+        }
+
+    xmlhttp.onreadystatechange=function(){
+        if (xmlhttp.readyState==4 && xmlhttp.status==200){
+            document.getElementById("divTabla").innerHTML=xmlhttp.responseText;
+        }
+    };      
+    xmlhttp.open("GET","./ajxMaestros.php?varAtributo="+clave+"&varTxtLike="+txtLike,true);             
+    xmlhttp.send();  
+} 
+/////////////////////////funciones de Calificaciones////////////////////////////////////////////
 function actualizarCalificaciones(id, nombre,matricula,calificacion,curso,profesor,ciclo,ano){                                    
     document.getElementById('txtId').value = id;
     document.getElementById('txtNombre').value = nombre;
@@ -190,3 +233,88 @@ function actualizarCalificaciones(id, nombre,matricula,calificacion,curso,profes
     document.getElementById('txtOpc').value = 'upd';
     document.getElementById('frmUpdCalificacion').submit();
 }
+function agregarCalificaciones(){
+    window.location.href = './addCalificaciones.php';
+}
+function grabarCalificacion(){ 
+    //falta validar las cajas de entrada de datos
+    document.getElementById('frmAddCalificacion').submit();
+}
+function regresarShwCalificaciones(){
+    window.location.href="./shwCalificaciones.php"
+}
+function buscarCalificacion(){
+    var sel     = document.getElementById("selBuscar");
+    var clave   = sel.options[sel.selectedIndex].value;            
+    var txtLike = document.getElementById('txtBuscar').value;                                        
+
+    //ajax
+    if (window.XMLHttpRequest){// code for IE7+, Firefox, Chrome, Opera, Safari
+        xmlhttp=new XMLHttpRequest();
+        }
+    else
+        {// code for IE6, IE5
+        xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+        }
+    if (window.XMLHttpRequest){
+        xmlhttp=new XMLHttpRequest();
+        }
+    else {
+        xmlhttp=new ActiveXObject("Msxml2.XMLHTTP");
+        }
+
+    xmlhttp.onreadystatechange=function(){
+        if (xmlhttp.readyState==4 && xmlhttp.status==200){
+            document.getElementById("divTabla").innerHTML=xmlhttp.responseText;
+        }
+    };      
+    xmlhttp.open("GET","./ajxCalificacion.php?varAtributo="+clave+"&varTxtLike="+txtLike,true);             
+    xmlhttp.send();  
+}
+/////////////////////////funciones de Calificaciones////////////////////////////////////////////
+function actualizarCurso(id,clave, nombre, espec){                                
+    document.getElementById('txtId').value = id;
+    document.getElementById('clave').value = clave;
+    document.getElementById('espec').value = espec;
+    document.getElementById('txtNombre').value = nombre;
+    document.getElementById('txtOpc').value = 'upd';
+    document.getElementById('frmUpdCurso').submit();
+}
+function agregarCurso(){
+    window.location.href = './addMateria.php';
+}
+function grabarCurso(){ 
+    //falta validar las cajas de entrada de datos
+    document.getElementById('frmAddCurso').submit();
+}
+function regresarShwCurso(){
+    window.location.href="./shwMaterias.php"
+}
+function buscarCurso(){
+    var sel     = document.getElementById("selBuscar");
+    var clave   = sel.options[sel.selectedIndex].value;            
+    var txtLike = document.getElementById('txtBuscar').value;                                        
+
+    //ajax
+    if (window.XMLHttpRequest){// code for IE7+, Firefox, Chrome, Opera, Safari
+        xmlhttp=new XMLHttpRequest();
+        }
+    else
+        {// code for IE6, IE5
+        xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+        }
+    if (window.XMLHttpRequest){
+        xmlhttp=new XMLHttpRequest();
+        }
+    else {
+        xmlhttp=new ActiveXObject("Msxml2.XMLHTTP");
+        }
+
+    xmlhttp.onreadystatechange=function(){
+        if (xmlhttp.readyState==4 && xmlhttp.status==200){
+            document.getElementById("divTabla").innerHTML=xmlhttp.responseText;
+        }
+    };      
+    xmlhttp.open("GET","./ajxMateria.php?varAtributo="+clave+"&varTxtLike="+txtLike,true);             
+    xmlhttp.send();  
+} 

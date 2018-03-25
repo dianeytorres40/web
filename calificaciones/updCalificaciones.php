@@ -23,7 +23,8 @@
 <head>
     <title></title>
     <!-- funciones javascript  --> 
-    <script type="text/javascript" src="../js/funciones.js"></script>        
+    <script type="text/javascript" src="../js/funciones.js"></script>   
+    <script type="text/javascript" src="../js/jquery.js"></script>     
 </head>
 
 <!-- establece foco a la caja de entrada del nombre de la especialidad -->

@@ -22,7 +22,8 @@
 <head>
     <title></title>
     <!-- funciones javascript  --> 
-    <script type="text/javascript" src="../js/funciones.js"></script>        
+    <script type="text/javascript" src="../js/funciones.js"></script>     
+    <script type="text/javascript" src="../js/jquery.js"></script>   
 </head>
 
 <!-- establece foco a la caja de entrada del nombre de la especialidad -->
@@ -68,7 +69,8 @@
             <?php
                 $sql = "SELECT nombre FROM especialidad";
                 $result = mysqli_query($link,$sql);         
-                echo "<select name='especialidad' id='especialidad' value='$especialidad'>";
+                echo "<select name='especialidad' id='especialidad' >";
+                echo "<option value='".$especialidad."' selected>".$especialidad."</option>";
                 while ($row = $result->fetch_assoc()){
                     echo "<option value='".$row['nombre']."'>".$row['nombre']."</option>";
                 };

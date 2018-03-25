@@ -26,6 +26,7 @@
             <!-- funciones javascript  --> 
             <script type="text/javascript" src="../js/funciones.js"></script>
             <link rel="stylesheet" href="../css/estilos.css">
+            <script type="text/javascript" src="../js/jquery.js"></script>
         </head>
 
         <body>
@@ -53,9 +54,8 @@
 
                 <!-- ventana desplegable con los atributos de la tabla para hacer busquedas -->
                 <select id='selBuscar' name='selBuscar' onClick="javascript: document.getElementById('txtBuscar').focus();">
-                    <option id='optBuscar' value='0'>Atributo</option>
                     <option id='optBuscar' value='matricula'>matricula</option>
-                    <option id='optBuscar' value='nombre'>Nombre</option>
+                    <option id='optBuscar' value='cursoid'>materia</option>
                 </select>
 
                 <!-- caja de texto, contiene dato del criterio de busqueda -->
@@ -64,7 +64,7 @@
 
                 <!-- botón de buscar -->
                 <input type='button' id='btnBuscar' name='btnBuscar' value='Buscar' 
-                onclick='buscarMaterias()'>
+                onclick='buscarCalificacion()'>
 
                 <!-- botón de imprimir -->
                 <input type='button' id='btnPrint' name='btnPrint' value='Imprimir' 
@@ -72,7 +72,7 @@
 
                 <!-- botón de agregar -->
                 <input type='button' id='btnAgregar' name='btnAgregar' value='Agregar' 
-                onclick='agregarMaterias()'> 
+                onclick='agregarCalificaciones()'> 
 
             </td></tr>
         </table>

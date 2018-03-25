@@ -31,6 +31,7 @@
             <title>claseDAWEB shwEspecialidades</title> 
             <!-- funciones javascript  --> 
             <script type="text/javascript" src="../js/funciones.js"></script>
+            <script type="text/javascript" src="../js/jquery.js"></script>
             <link rel="stylesheet" href="../css/estilos.css">
         </head>
 
@@ -52,26 +53,19 @@
         
                 <!-- ventana desplegable con los atributos de la tabla para hacer busquedas -->
                 <select id='selBuscar' name='selBuscar' onClick="javascript: document.getElementById('txtBuscar').focus();">
-                    <option id='optBuscar' value='0'>Atributo</option>
+                    <option id='optBuscar' value='id'>Id</option>
                     <option id='optBuscar' value='nombre'>Nombre</option>
                 </select>
                 <!-- caja de texto, contiene dato del criterio de busqueda -->
                 <input type='text' id='txtBuscar' name='txtBuscar' value=''
                 style='width:150px;'>
-
                 <!-- botón de buscar -->
-                <input type='button' id='btnBuscar' name='btnBuscar' value='Buscar' 
-                onclick='buscarMaterias()'>
-
+                <input type='button' id='btnBuscar' name='btnBuscar' value='Buscar' onclick='buscarMaestros();'>
                 <!-- botón de agregar -->
                 <input type='button' id='btnAgregar' name='btnAgregar' value='Agregar' onclick='agregarMaestros();'>
-
                 <!-- botón de imprimir -->
                 <input type='button' id='btnPrint' name='btnPrint' value='Imprimir' 
                 onclick='imprimirMaterias()'>
-
-                
-
             </td></tr>
         </table>
 
@@ -84,7 +78,7 @@
 
         <!-- tabla para los titulos de las columnas -->                             
         <table align='center' border='1' width='400'>            
-            <thead style='position: fixed !important;'> 
+            <thead> 
                 <tr style='background-color: #BAB7B7'>
                     <th width='50' height='20'>ID</th>
                     <th height='20'>Nombre</th>
@@ -93,8 +87,7 @@
 
             <!-- cuerpo de la tabla html que contiene los renglones con cada registro de 
                  la tabla de base de datos especialidades -->
-            <tbody style='overflow:auto;'>
-            <tr><td colspan='2'>&nbsp;</td></tr>                    
+            <tbody style='overflow:auto;'>                 
 
             <?php
             //desplegar los registros de la tabla especialidades de la bd
