@@ -42,11 +42,11 @@
             <input type='hidden' id='txtId' name='txtId' value='<?php echo($id);?>'>
             <input type='hidden' id='matricula' name='matricula' value='<?php echo($matricula);?>'>
             <input type='hidden' id='txtNombre' name='txtNombre' value='<?php echo($txtNombre);?>'>
-            <input type='hidden' id='calificacion' name='calificacion' value='<?php echo($calificacion);?>'>
+            <!-- <input type='hidden' id='calificacion' name='calificacion' value='<?php echo($calificacion);?>'>
             <input type='hidden' id='curso' name='curso' value='<?php echo($curso);?>'>
             <input type='hidden' id='profesor' name='profesor' value='<?php echo($profesor);?>'>
             <input type='hidden' id='ciclo' name='ciclo' value='<?php echo($ciclo);?>'>
-            <input type='hidden' id='ano' name='ano' value='<?php echo($ano);?>'>
+            <input type='hidden' id='ano' name='ano' value='<?php echo($ano);?>'> -->
             </td>
         </tr>                    
         <tr>
@@ -101,7 +101,8 @@
             <td colspan='2' align='center'>
                 <table border='1'>
                 <tr>
-                    <td><input type='button' id='btnGrabar' name='btnGrabar' value='Grabar' style='width: 100px' onClick='enviar("updCal")'></td>
+                    <!-- <td><input type='button' id='btnGrabar' name='btnGrabar' value='Grabar' style='width: 100px' onClick='enviar("updCal")'></td> -->
+                    <td><input type='button' id='btnGrabar' name='btnGrabar' value='Grabar' style='width: 100px' onClick='validaCalificaciones()'></td>
                     <td><input type='button' id='btnEliminar' name='btnEliminar' value='Eliminar' style='width: 100px' onClick='enviar("delCal")'></td>
                     <td><input type='button' id='btnRegresar' name='btnRegresar' value='Regresar' style='width: 100px' onClick='enviar("backCal")'></td>
                 </tr>

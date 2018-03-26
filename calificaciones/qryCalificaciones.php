@@ -47,7 +47,7 @@
             $strQry = 'DELETE FROM calificaciones WHERE id = '.$id;                          
             $result = mysqli_query($link,$strQry) or 
             die('*** Error al ejecutar el procedimiento almacenado: '.mysqli_error());
-            header('Location:./shwEspecialidades.php');
+            header('Location:./shwCalificaciones.php');
             break;
 
     }

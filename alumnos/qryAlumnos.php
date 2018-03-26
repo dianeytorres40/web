@@ -44,10 +44,10 @@
 
         case 'del':
             //opción de eliminar registro        
-            $strQry = 'DELETE FROM especialidad WHERE id = '.$id;                          
+            $strQry = 'DELETE FROM alumno WHERE id = '.$id;                          
             $result = mysqli_query($link,$strQry) or 
             die('*** Error al ejecutar el procedimiento almacenado: '.mysqli_error());
-            header('Location:./shwEspecialidades.php');
+            header('Location:./shwAlumnos.php');
             break;
 
     }

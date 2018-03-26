@@ -62,7 +62,7 @@ function enviar(opc){
         case 'delCurso':                                            
             if(confirm('Desea eliminar éste registro?')){
                 document.getElementById('txtOpc').value = 'del';
-                document.getElementById('frmUpdCalificacion').submit();
+                document.getElementById('frmUpdCurso').submit();
             }                              
             break;
         case 'backCurso':
@@ -123,7 +123,28 @@ function regresarShwEspecialidades(){
     window.location.href="./shwEspecialidades.php"
 }
 function validaEspecialidades(){
+    var nombreEspecialidad = $("#txtNombre").val();
+    //Valida si el nombre fue escrito.
+    if(nombreEspecialidad!=""){
+        enviar("upd");
+    }
+    else{
+        alert("Escribe nombre de especialidad primero");
+    }
     
+    
+
+}
+function validaEspecialidadesAdd(){
+    var nombreEspecialidad = $("#txtNombre").val();
+    var txtClave = $("#txtClave").val();
+    //Valida si el nombre y clave  fueron escritos.
+    if(nombreEspecialidad!="" && txtClave!="" ){
+        grabarEspecialidad()
+    }
+    else{
+        alert("Los campos de clave y especialidad deben de estar llenados");
+    }
 }
 /////////////////////////funciones de Alumnos////////////////////////////////////////////
 function actualizarAlumno(id, matricula,nombre,paterno,materno, especialidad, edad){                                    
@@ -175,8 +196,51 @@ function buscarAlumnos(){
     xmlhttp.open("GET","./ajxAlumnos.php?varAtributo="+clave+"&varTxtLike="+txtLike,true);             
     xmlhttp.send();  
 } 
+function validaAlumnos(){
+    var nombre = $("#txtnombre").val();
+    var matricula = $("#matricula").val();
+    var paterno = $("#paterno").val();
+    var materno = $("#materno").val();
+    var especialidad = $("#especialidad").val();
+    var edad = $("#edad").val();
+    //Valida si el nombre fue escrito.
+    if(nombre!="" && matricula!="" && paterno!="" && materno!="" && especialidad!="" && edad!=""){
+        if(soloNumeros(edad) && soloNumeros(matricula)){
+            enviar("updAlu");
+        }
+        else{
+            alert("La edad solo son numeros");
+        }
+    }
+    else{
+        alert("Las opcones no pueden dejarse en blanco");
+    }
+    //Valida si el nombre fue escrito.   
+}
+function validaAlumno2(){
+    var nombre = $("#txtnombre").val();
+    var matricula = $("#matricula").val();
+    var paterno = $("#paterno").val();
+    var materno = $("#materno").val();
+    var especialidad = $("#especialidad").val();
+    var edad = $("#edad").val();
+    //Valida si el nombre fue escrito.
+    if(nombre!="" && matricula!="" && paterno!="" && materno!="" && especialidad!="" && edad!=""){
+        if(soloNumeros(edad) && soloNumeros(matricula)){
+            grabarAlumno();
+        }
+        else{
+            alert("La edad y matricula solo son numeros");
+        }
+    }
+    else{
+        alert("Las opcones no pueden dejarse en blanco");
+    }
+    //Valida si el nombre fue escrito.   
+}
+
 /////////////////////////funciones de Maestros////////////////////////////////////////////
-function actualizarMaestros(id, nombre){                                    
+function actualizarMaestro(id, nombre){                                    
     document.getElementById('txtId').value = id;
     document.getElementById('txtNombre').value = nombre;
     document.getElementById('txtOpc').value = 'upd';
@@ -220,6 +284,28 @@ function buscarMaestros(){
     xmlhttp.open("GET","./ajxMaestros.php?varAtributo="+clave+"&varTxtLike="+txtLike,true);             
     xmlhttp.send();  
 } 
+function validaMaestros(){
+    var nombre = $("#txtNombre").val();
+    //Valida si el nombre fue escrito.
+    if(nombre!=""){
+        enviar("updPro");
+    }
+    else{
+        alert("Escribir Nombre de Maestro");
+    }
+    //Valida si el nombre fue escrito.   
+}
+function validaMaestros2(){
+    var nombre = $("#txtNombre").val();
+    //Valida si el nombre fue escrito.
+    if(nombre!=""){
+        grabarMaestro();
+    }
+    else{
+        alert("Escribir Nombre de Maestro");
+    }
+    //Valida si el nombre fue escrito.   
+}
 /////////////////////////funciones de Calificaciones////////////////////////////////////////////
 function actualizarCalificaciones(id, nombre,matricula,calificacion,curso,profesor,ciclo,ano){                                    
     document.getElementById('txtId').value = id;
@@ -271,6 +357,76 @@ function buscarCalificacion(){
     xmlhttp.open("GET","./ajxCalificacion.php?varAtributo="+clave+"&varTxtLike="+txtLike,true);             
     xmlhttp.send();  
 }
+function validaCalificaciones(){
+    var curso = $("#curso").val();
+    var profesor = $("#profesor").val();
+    var ciclo = $("#ciclo").val();
+    var ano = $("#ano").val();
+    var calificacion = $("#calificacion").val();
+    //Valida si el nombre fue escrito.
+    if(curso!="" && profesor!="" && ciclo!="" && ano!="" && calificacion!=""){
+        if(soloNumeros(ano) && soloNumeros(calificacion)){
+            if(ano>=2000 && ano<=2018){
+                if(calificacion>=0 && calificacion<=100){
+                    if(ciclo=="Verano" || ciclo == "Invierno"){
+                        enviar("updCal");
+                    }
+                    else{
+                        alert("Ciclos validos. Verano y Invierno");
+                    }
+                }
+                else{
+                    alert("Calificaciones solo del 0 al 100");
+                }
+            }
+            else{
+                alert("Escribe un ano valido. Del 2000 al 2018");
+            }
+        }
+        else{
+            alert("La edad solo son numeros");
+        }
+    }
+    else{
+        alert("Las opcones no pueden dejarse en blanco");
+    }
+    //Valida si el nombre fue escrito.   
+}
+function validaCalificaciones2(){
+    var matricula = $("#matricula").val();
+    var curso = $("#curso").val();
+    var profesor = $("#profesor").val();
+    var ciclo = $("#ciclo").val();
+    var ano = $("#ano").val();
+    var calificacion = $("#calificacion").val();
+    //Valida si el nombre fue escrito.
+        if(matricula!="" &&curso!="" && profesor!="" && ciclo!="" && ano!="" && calificacion!=""){
+            if(soloNumeros(ano) && soloNumeros(calificacion)){
+                if(ano>=2000 && ano<=2018){
+                    if(calificacion>=0 && calificacion<=100){
+                        if(ciclo=="Verano" || ciclo == "Invierno"){
+                            grabarCalificacion();
+                        }
+                        else{
+                            alert("Ciclos validos. Verano y Invierno");
+                        }
+                    }
+                    else{
+                        alert("Calificaciones solo del 0 al 100");
+                    }
+                }
+                else{
+                    alert("Escribe un ano valido. Del 2000 al 2018");
+                }
+            }
+            else{
+                alert("La edad solo son numeros");
+            }
+        }
+        else{
+            alert("Las opcones no pueden dejarse en blanco");
+        }   
+}
 /////////////////////////funciones de Calificaciones////////////////////////////////////////////
 function actualizarCurso(id,clave, nombre, espec){                                
     document.getElementById('txtId').value = id;
@@ -318,3 +474,9 @@ function buscarCurso(){
     xmlhttp.open("GET","./ajxMateria.php?varAtributo="+clave+"&varTxtLike="+txtLike,true);             
     xmlhttp.send();  
 } 
+
+//////////////////////////Funciones para Validar////////////////////////////////////////////
+
+function soloNumeros(str){
+        return !/\D/.test(str);
+}

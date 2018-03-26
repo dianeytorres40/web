@@ -51,7 +51,8 @@
             <td colspan='2' align='center'>
                 <table border='1'>
                 <tr>
-                <td><input type='button' id='btnGrabar' name='btnGrabar' value='Grabar' style='width: 100px' onClick='enviar("upd")'></td>
+                <!-- <td><input type='button' id='btnGrabar' name='btnGrabar' value='Grabar' style='width: 100px' onClick='enviar("upd")'></td> -->
+                <td><input type='button' id='btnGrabar' name='btnGrabar' value='Grabar' style='width: 100px' onClick='validaEspecialidades();'></td>
                 <td><input type='button' id='btnEliminar' name='btnEliminar' value='Eliminar' style='width: 100px' onClick='enviar("del")'></td>
                 <td><input type='button' id='btnRegresar' name='btnRegresar' value='Regresar' style='width: 100px' onClick='enviar("back")'></td>
                 </tr>

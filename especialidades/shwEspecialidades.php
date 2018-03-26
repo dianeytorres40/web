@@ -69,7 +69,7 @@
                 onclick='imprimirEspecialidades()'>
                 <!-- botón de agregar -->
                 <input type='button' id='btnAgregar' name='btnAgregar' value='Agregar' 
-                onclick='agregarCalificaciones()'> 
+                onclick='agregarEspecialidades()'> 
             </td></tr>
         </table>
         <!-- región para alojar la tabla contenedora de registros -->        

@@ -13,7 +13,8 @@
 <head>
     <title>claseDAWEB Agrega Calificacion</title>
     <!-- funciones javascript  --> 
-    <script type="text/javascript" src="../js/funciones.js"></script>    
+    <script type="text/javascript" src="../js/funciones.js"></script>   
+    <script type="text/javascript" src="../js/jquery.js"></script>  
 </head>
 
 <!-- establece foco a la caja de entrada de la clave -->
@@ -115,7 +116,8 @@
     <table align="center">
     <tr height="50px">
         <td align='center'>
-            <input type='button' id='btnGrabar' name='btnGrabar' value='Grabar' style='width: 100px' onClick='grabarCalificacion()'>
+            <!-- <input type='button' id='btnGrabar' name='btnGrabar' value='Grabar' style='width: 100px' onClick='grabarCalificacion()'> -->
+            <input type='button' id='btnGrabar' name='btnGrabar' value='Grabar' style='width: 100px' onClick='validaCalificaciones2();'>
         </td>
         <td colspan='2' align='center'>
             <input type='button' id='btnRegresar' name='btnRegresa' value='Regresar' style='width: 100px' onClick='regresarShwCalificaciones();'>            

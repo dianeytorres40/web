@@ -23,7 +23,8 @@
     <title></title>
     <!-- funciones javascript  --> 
     <script type="text/javascript" src="../js/funciones.js"></script>     
-    <script type="text/javascript" src="../js/jquery.js"></script>   
+    <script type="text/javascript" src="../js/jquery.js"></script>
+
 </head>
 
 <!-- establece foco a la caja de entrada del nombre de la especialidad -->
@@ -40,11 +41,6 @@
             <input type='hidden' id='txtOpc' name='txtOpc' value=''>
             <input type='hidden' id='txtId' name='txtId' value='<?php echo($id);?>'>
             <input type='hidden' id='matricula' name='matricula' value='<?php echo($matricula);?>'>
-            <input type='hidden' id='txtnombre' name='txtnombre' value='<?php echo($txtnombre);?>'>
-            <input type='hidden' id='paterno' name='paterno' value='<?php echo($paterno);?>'>
-            <input type='hidden' id='materno' name='materno' value='<?php echo($materno);?>'>
-            <input type='hidden' id='especialidad' name='especialidad' value='<?php echo($especialidad);?>'>
-            <input type='hidden' id='edad' name='edad' value='<?php echo($edad);?>'>
             </td>
         </tr>                    
         <tr>
@@ -53,11 +49,11 @@
         </tr>
         <tr>
             <td>Nombre</td>
-            <td><input type='text' id='txtnombre' name='txtnombre' value='<?php echo($txtnombre);?>'></td>
+            <td><input type='text' id="txtnombre" name="txtnombre" value='<?php echo($txtnombre);?>'></td>
         </tr>
         <tr>
             <td>Apellido Paterno</td>
-            <td><input type='text' id='paterno' name='paterno' value='<?php echo($paterno);?>'></td>
+            <td><input type='text' id="paterno" name="paterno" value="<?php echo($paterno);?>"></td>
         </tr>
         <tr>
             <td>Apellido Materno</td>
@@ -87,7 +83,8 @@
             <td colspan='2' align='center'>
                 <table border='1'>
                 <tr>
-                    <td><input type='button' id='btnGrabar' name='btnGrabar' value='Grabar' style='width: 100px' onClick='enviar("updAlu")'></td>
+                    <!-- <td><input type='button' id='btnGrabar' name='btnGrabar' value='Grabar' style='width: 100px' onClick='enviar("updAlu")'></td> -->
+                    <td><input type='button' id='btnGrabar' name='btnGrabar' value='Grabar' style='width: 100px' onClick='validaAlumnos();'></td>
                     <td><input type='button' id='btnEliminar' name='btnEliminar' value='Eliminar' style='width: 100px' onClick='enviar("delAlu")'></td>
                     <td><input type='button' id='btnRegresar' name='btnRegresar' value='Regresar' style='width: 100px' onClick='enviar("backAlu")'></td>
                 </tr>

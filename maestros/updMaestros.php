@@ -46,7 +46,8 @@
             <td colspan='2' align='center'>
                 <table border='1'>
                 <tr>
-                <td><input type='button' id='btnGrabar' name='btnGrabar' value='Grabar' style='width: 100px' onClick='enviar("updPro")'></td>
+                <!-- <td><input type='button' id='btnGrabar' name='btnGrabar' value='Grabar' style='width: 100px' onClick='enviar("updPro")'></td> -->
+                <td><input type='button' id='btnGrabar' name='btnGrabar' value='Grabar' style='width: 100px' onClick='validaMaestros()'></td>
                 <td><input type='button' id='btnEliminar' name='btnEliminar' value='Eliminar' style='width: 100px' onClick='enviar("delPro")'></td>
                 <td><input type='button' id='btnRegresar' name='btnRegresar' value='Regresar' style='width: 100px' onClick='enviar("backPro")'></td>
                 </tr>
